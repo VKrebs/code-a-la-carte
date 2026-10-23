@@ -1,0 +1,14 @@
+---
+
+interface Props {
+    topic: string
+}
+
+const { topic } = Astro.props;
+
+---
+
+<p>{topic}</p>
+<style>
+    p { color: var(--muted);}
+</style>
