@@ -1,7 +1,7 @@
 ---
 import type { Category } from "../content.config";
 
-type TextColor = "black" | "white";
+type TextColor = "var(--ink)" | "var(--white)";
 
 interface Props {
   category: Category;
@@ -11,13 +11,19 @@ const categoriesColors: Record<
   Category,
   { background: string; text: TextColor }
 > = {
-  Craft: { background: "#870037", text: "white" },
-  Tooling: { background: "#19E1D5", text: "black" },
-  Testing: { background: "#30B65D", text: "black" },
-  Design: { background: "#2E0DD5", text: "white" },
-  Collaboration: { background: "#B54491", text: "white" },
-  Platform: { background: "#6D7401", text: "white" },
-  Architecture: { background: "#BC79FA", text: "black" },
+  Craft: { background: "var(--category-craft)", text: "var(--white)" },
+  Tooling: { background: "var(--category-tooling)", text: "var(--ink)" },
+  Testing: { background: "var(--category-testing)", text: "var(--ink)" },
+  Design: { background: "var(--category-design)", text: "var(--white)" },
+  Collaboration: {
+    background: "var(--category-collaboration)",
+    text: "var(--white)",
+  },
+  Platform: { background: "var(--category-platform)", text: "var(--white)" },
+  Architecture: {
+    background: "var(--category-architecture)",
+    text: "var(--ink)",
+  },
 };
 
 const { category } = Astro.props;
@@ -28,6 +34,16 @@ const textColor = categoriesColors[category].text;
 <span class="badge">{category}</span>
 <style define:vars={{ backgroundColor, textColor }}>
   .badge {
+    display: inline-block;
+    padding: 0.35em 0.8em 0.3em;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+    white-space: nowrap;
     background: var(--backgroundColor);
     color: var(--textColor);
   }

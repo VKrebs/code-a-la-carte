@@ -7,6 +7,14 @@
   --muted: #6b5a85;
   --white: #ffffff;
 
+  --category-craft: #870037;
+  --category-tooling: #19e1d5;
+  --category-testing: #30b65d;
+  --category-design: #2e0dd5;
+  --category-collaboration: #b54491;
+  --category-platform: #6d7401;
+  --category-architecture: #bc79fa;
+
   --code-panel: #2a1150;
   --code-text: #f4e9ff;
   --code-comment: #a996cf;
@@ -20,4 +28,6 @@
   --astro-code-token-function: var(--code-function);
   --astro-code-token-comment: var(--code-comment);
   --astro-code-token-constant: var(--code-number);
+
+  --tracking-caps: 0.12em;
 }
