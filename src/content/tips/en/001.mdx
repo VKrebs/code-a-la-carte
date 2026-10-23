@@ -1,0 +1,42 @@
+---
+number: 1
+category: Testing
+topic: Arrange, Act, Assert
+takeaway: Drop the AAA comments, keep the AAA structure.
+altText: >-
+    Tip: Drop the Arrange, Act, Assert comments, keep the Arrange, Act, Assert structure.
+    Before: a test with comments above each section.
+    After: the same test with the comments removed, the three sections still in order.
+---
+import BeforeAfter from "../../../components/BeforeAfter.astro"
+
+<BeforeAfter>
+    <div slot="before">
+        ```csharp
+        [Fact]
+        public void Discount_over_100() 
+        {
+            // Arrange
+            var cart = CartWith(120m);
+            // Act
+            var total = cart.Total();
+            // Assert
+            Assert.Equal(108m, total);
+        }
+        ```
+        </div>
+
+        <div slot="after">
+        ```csharp
+        [Fact]
+        public void Discount_over_100() 
+        {
+            var cart = CartWith(120m);
+
+            var total = cart.Total();
+
+            Assert.Equal(108m, total);
+        }
+        ```
+    </div>
+</BeforeAfter>
