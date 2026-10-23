@@ -4,11 +4,12 @@ category: Testing
 topic: Arrange, Act, Assert
 takeaway: Drop the AAA comments, keep the AAA structure.
 altText: >-
-    Tip: Drop the Arrange, Act, Assert comments, keep the Arrange, Act, Assert structure.
-    Before: a test with comments above each section.
-    After: the same test with the comments removed, the three sections still in order.
+  Tip: Drop the Arrange, Act, Assert comments, keep the Arrange, Act, Assert structure.
+  Before: a test with comments above each section.
+  After: the same test with the comments removed, the three sections still in order.
 ---
-import BeforeAfter from "../../../components/BeforeAfter.astro"
+
+import BeforeAfter from "../../../components/BeforeAfter.astro";
 
 <BeforeAfter>
     <div slot="before">
@@ -25,7 +26,7 @@ import BeforeAfter from "../../../components/BeforeAfter.astro"
         }
         ```
         </div>
-
+ 
         <div slot="after">
         ```csharp
         [Fact]
@@ -39,4 +40,5 @@ import BeforeAfter from "../../../components/BeforeAfter.astro"
         }
         ```
     </div>
+
 </BeforeAfter>

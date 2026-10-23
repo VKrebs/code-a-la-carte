@@ -1,16 +1,16 @@
 ---
-
 interface Props {
-    permalink: string
+  permalink: string;
 }
 
 const { permalink } = Astro.props;
-
 ---
 
 <footer>
-    <p>© 2026 Valentin · CC BY-SA 4.0 · codealacarte.dev/{permalink}</p>
+  <p>© 2026 Valentin · CC BY-SA 4.0 · codealacarte.dev/{permalink}</p>
 </footer>
 <style>
-    footer { color: var(--muted);}
+  footer {
+    color: var(--muted);
+  }
 </style>

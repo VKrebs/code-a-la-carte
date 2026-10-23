@@ -1,28 +1,34 @@
 ---
-import type { Category } from "../content.config"; 
-
+import type { Category } from "../content.config";
 
 type TextColor = "black" | "white";
 
 interface Props {
-    category: Category
+  category: Category;
 }
 
-const categoriesColors : Record<Category, { background: string, text: TextColor }> = {
-    "Craft": { background: '#870037', text: 'white' },
-    "Tooling": { background: '#19E1D5', text: 'black' },
-    "Testing": { background: '#30B65D', text: 'black' },
-    "Design": { background: '#2E0DD5', text: 'white' },
-    "Collaboration": { background: '#B54491', text: 'white' },
-    "Platform": { background: '#6D7401', text: 'white' },
-    "Architecture":{ background: '#BC79FA', text: 'black' }
+const categoriesColors: Record<
+  Category,
+  { background: string; text: TextColor }
+> = {
+  Craft: { background: "#870037", text: "white" },
+  Tooling: { background: "#19E1D5", text: "black" },
+  Testing: { background: "#30B65D", text: "black" },
+  Design: { background: "#2E0DD5", text: "white" },
+  Collaboration: { background: "#B54491", text: "white" },
+  Platform: { background: "#6D7401", text: "white" },
+  Architecture: { background: "#BC79FA", text: "black" },
 };
 
 const { category } = Astro.props;
 const backgroundColor = categoriesColors[category].background;
 const textColor = categoriesColors[category].text;
 ---
+
 <span class="badge">{category}</span>
 <style define:vars={{ backgroundColor, textColor }}>
-    .badge { background: var(--backgroundColor); color: var(--textColor)}
+  .badge {
+    background: var(--backgroundColor);
+    color: var(--textColor);
+  }
 </style>
