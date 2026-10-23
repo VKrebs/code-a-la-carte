@@ -23,14 +23,13 @@ const permalink = "t/" + number.toString().padStart(3, "0");
     <Font cssVariable="--font-code" />
   </head>
   <body>
-    <header>
-      <CategoryBadge category={category} />
-      <Eyebrow topic={topic} />
-    </header>
-
     <main>
-      <h1>{takeaway}</h1>
       <article>
+        <header>
+          <CategoryBadge category={category} />
+          <Eyebrow topic={topic} />
+          <h1>{takeaway}</h1>
+        </header>
         <slot />
       </article>
     </main>
@@ -38,3 +37,17 @@ const permalink = "t/" + number.toString().padStart(3, "0");
     <Footer permalink={permalink} />
   </body>
 </html>
+<style>
+  body {
+    margin: 0 auto;
+    max-width: 64rem;
+    padding: 2rem clamp(1rem, 5vw, 4rem);
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+</style>
