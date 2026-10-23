@@ -1,7 +1,82 @@
 ---
+interface Props {
+  beforeLabel?: string;
+  afterLabel?: string;
+}
+
+const { beforeLabel = "Before", afterLabel = "After" } = Astro.props;
 ---
 
-<div>
-  <slot name="before" />
-  <slot name="after" />
+<div class="before-after">
+  <figure>
+    <figcaption>{beforeLabel}</figcaption>
+    <slot name="before" />
+  </figure>
+  <figure class="after-side">
+    <figcaption>{afterLabel}</figcaption>
+    <slot name="after" />
+  </figure>
 </div>
+<style>
+  .before-after {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  @media (min-width: 48rem) {
+    .before-after {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 0 0 14px 0;
+  }
+
+  figcaption::before {
+    content: "";
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+  }
+
+  figure :global(pre) {
+    margin: 0;
+    padding: 24px 26px;
+    border: 4px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    flex: 1;
+  }
+
+  figure :global(pre:focus-visible) {
+    outline: none;
+    box-shadow: 6px 6px 0 var(--brand-orange);
+  }
+
+  figure > :global(*:not(figcaption)) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .after-side figcaption::before {
+    background: var(--ink);
+  }
+</style>
