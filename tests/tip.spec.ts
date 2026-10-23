@@ -27,6 +27,17 @@ test.describe("tip 001", () => {
     );
   });
 
+  test("links Report an error to the erratum form for this page", async ({
+    page,
+  }) => {
+    const link = page.getByRole("link", { name: "Report an error" });
+    await expect(link).toBeVisible();
+    const url = new URL((await link.getAttribute("href"))!);
+
+    expect(url.searchParams.get("template")).toBe("erratum.yml");
+    expect(url.searchParams.get("page")).toBe("codealacarte.dev/t/001");
+  });
+
   test("has no accessibility violations", async ({ page }) => {
     const results = await new AxeBuilder({ page }).analyze();
     expect(results.violations).toEqual([]);
