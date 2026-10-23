@@ -1,0 +1,25 @@
+name: Erratum
+description: Report a mistake in the content of the lessons or tips.
+title: "[Erratum]: "
+labels: ["erratum"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Permalink
+      description: What's the permalink of the page?
+      placeholder: codealacarte.dev/t/001
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: What's wrong?
+      description: What is the mistake?
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correction
+      description: What's your suggested correction?

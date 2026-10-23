@@ -1,0 +1,31 @@
+name: Topic idea
+description: Suggest a topic you'd like to see a Lesson or Tip on.
+title: "[Topic idea]: "
+labels: ["topic-idea"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      description: What's the topic you'd like a Lesson or a Tip on?
+      placeholder: Micro-services Architecture
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it matter?
+      description: What problem would it help with, or where did you run into it?
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category would best fit? (Leave empty if you don't know)
+      options:
+        - Architecture
+        - Collaboration
+        - Craft
+        - Design
+        - Platform
+        - Testing
+        - Tooling
