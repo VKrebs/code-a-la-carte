@@ -9,11 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",
     "@astrojs/mdx": "^8.1.1",
     "astro": "^7.4.2"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.1"
   }
 }
