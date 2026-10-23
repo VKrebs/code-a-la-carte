@@ -1,0 +1,16 @@
+@import "./tokens.css";
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-text);
+}
+
+code, pre {
+    font-family: var(--font-code);
+    font-variant-ligatures: none;
+}
+
+.astro-code span[style*="token-comment"] {
+    font-style: italic;
+}
