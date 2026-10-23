@@ -10,7 +10,7 @@ export default defineConfig({
   webServer: {
     command: "npm run build && npm run preview -- --port 4322",
     url: "http://localhost:4322",
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
   },
   forbidOnly: !!process.env.CI,
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
