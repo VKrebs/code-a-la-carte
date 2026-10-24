@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "code-a-la-carte",
+  "compatibility_date": "2026-10-24",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+  "workers_dev": false,
+  "preview_urls": true,
+  "route": {
+    "pattern": "codealacarte.dev",
+    "custom_domain": true,
+  },
+}
