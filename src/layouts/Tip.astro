@@ -1,10 +1,9 @@
 ---
-import { Font } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import Base from "./Base.astro";
 import Footer from "../components/Footer.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import CategoryBadge from "../components/CategoryBadge.astro";
-import "../styles/global.css";
 
 type Props = CollectionEntry<"tips">["data"];
 
@@ -13,37 +12,22 @@ const { number, topic, category, takeaway } = Astro.props;
 const permalink = "t/" + number.toString().padStart(3, "0");
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{takeaway}</title>
-    <Font cssVariable="--font-text" />
-    <Font cssVariable="--font-code" />
-  </head>
-  <body>
-    <main>
-      <article>
-        <header>
-          <CategoryBadge category={category} />
-          <Eyebrow topic={topic} />
-          <h1>{takeaway}</h1>
-        </header>
-        <slot />
-      </article>
-    </main>
+<Base title={takeaway}>
+  <main>
+    <article>
+      <header>
+        <CategoryBadge category={category} />
+        <Eyebrow topic={topic} />
+        <h1>{takeaway}</h1>
+      </header>
+      <slot />
+    </article>
+  </main>
 
-    <Footer permalink={permalink} />
-  </body>
-</html>
+  <Footer permalink={permalink} />
+</Base>
+
 <style>
-  body {
-    margin: 0 auto;
-    max-width: 64rem;
-    padding: 2rem clamp(1rem, 5vw, 4rem);
-  }
-
   header {
     display: flex;
     flex-direction: column;
