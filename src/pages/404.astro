@@ -1,0 +1,97 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page not found · Code à la Carte">
+  <main>
+    <p class="error-code" aria-hidden="true">
+      404.
+    </p>
+    <div>
+      <h1>Oops! Looks like this page isn't on the menu.</h1>
+      <p class="subtitle">
+        The link may be mistyped, or this dish isn't served yet.
+      </p>
+    </div>
+    <a class="home-link" href="/">
+      Back to the home page
+    </a>
+  </main>
+</Base>
+<style>
+  main {
+    min-height: 80svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .error-code {
+    margin: 0;
+    padding: 0.35em 0.8em 0.3em;
+    background-color: var(--brand-orange);
+    border: 4px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: var(--tracking-caps);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+    max-width: 20ch;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    margin: 0;
+  }
+
+  .home-link {
+    --shadow-color: var(--ink);
+    padding: 0.35em 0.8em 0.3em;
+    color: var(--ink);
+    background-color: var(--lilac);
+    border: 4px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--shadow-color);
+    font-weight: 700;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-caps);
+  }
+
+  @media (hover: hover) {
+    .home-link:hover {
+      translate: 2px 2px;
+      box-shadow: 4px 4px 0 var(--shadow-color);
+    }
+  }
+
+  .home-link:active {
+    translate: 6px 6px;
+    box-shadow: none;
+  }
+
+  .home-link:focus-visible {
+    outline: 2px solid transparent;
+    --shadow-color: var(--brand-orange);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .home-link {
+      transition:
+        translate 100ms,
+        box-shadow 100ms;
+    }
+  }
+</style>
