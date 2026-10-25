@@ -1,0 +1,3 @@
+# Permalinks: english only for now
+/t/:n /en/tips/:n 302
+/t/:n/ /en/tips/:n 302
