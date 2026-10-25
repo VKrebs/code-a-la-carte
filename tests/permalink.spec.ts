@@ -23,6 +23,15 @@ test.describe("permalink", () => {
     expect(response.headers()["location"]).toBe("/en/tips/001");
   });
 
+  test("with trailing slash redirects temporarily (302)", async ({
+    request,
+  }) => {
+    const response = await request.get("/t/001/", { maxRedirects: 0 });
+
+    expect(response.status()).toBe(302);
+    expect(response.headers()["location"]).toBe("/en/tips/001");
+  });
+
   test("shows 404 page when unknown", async ({ page }) => {
     const response = await page.goto("/t/000");
 
