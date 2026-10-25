@@ -9,6 +9,10 @@ test.describe("tip 001", () => {
   test("shows its eyebrow, title, category and footer", async ({ page }) => {
     const tip = page.getByRole("article");
 
+    await expect(page).toHaveTitle(
+      "Drop the AAA comments, keep the AAA structure.",
+    );
+
     await expect(
       tip.getByRole("heading", {
         level: 1,
