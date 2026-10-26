@@ -23,8 +23,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run format:check
-      - run: npm run check
+      - run: npm run validate:format
+      - run: npm run validate:types
       - run: npm run validate:css
       - run: npm run validate:html
       - run: npx playwright install --with-deps chromium

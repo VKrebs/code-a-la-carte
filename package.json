@@ -8,13 +8,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "npx wrangler dev",
-    "check": "astro check",
-    "astro": "astro",
+    "preview": "npm run build && wrangler dev",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "validate:html": "astro build && html-validate \"dist/**/*.html\"",
+    "validate:format": "prettier --check .",
+    "validate:types": "astro check",
     "validate:css": "stylelint \"src/**/*.{css,astro}\"",
+    "validate:html": "npm run build && html-validate \"dist/**/*.html\"",
+    "validate": "npm run validate:format && npm run validate:types && npm run validate:css && npm run validate:html",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },
