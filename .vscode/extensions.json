@@ -2,6 +2,7 @@
   "recommendations": [
     "astro-build.astro-vscode",
     "esbenp.prettier-vscode",
+    "unifiedjs.vscode-mdx",
     "ms-playwright.playwright"
   ],
   "unwantedRecommendations": []
