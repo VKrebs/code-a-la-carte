@@ -5,15 +5,16 @@ interface Props {
 
 const { permalink } = Astro.props;
 
+const fullPermalink = "codealacarte.dev" + permalink;
 const reportUrl = new URL(
   "https://github.com/VKrebs/code-a-la-carte/issues/new",
 );
 reportUrl.searchParams.set("template", "erratum.yml");
-reportUrl.searchParams.set("page", `codealacarte.dev/${permalink}`);
+reportUrl.searchParams.set("page", fullPermalink);
 ---
 
 <footer>
-  <p>codealacarte.dev/{permalink}</p>
+  <p>{fullPermalink}</p>
   <a href={reportUrl.href}>Report an error</a>
 </footer>
 <style>

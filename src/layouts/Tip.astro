@@ -4,12 +4,13 @@ import Base from "./Base.astro";
 import TipFooter from "../components/TipFooter.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import CategoryBadge from "../components/CategoryBadge.astro";
+import { permalinkOf } from "../lib/numbers";
 
 type Props = CollectionEntry<"tips">["data"];
 
 const { number, topic, category, takeaway } = Astro.props;
 
-const permalink = "t/" + number.toString().padStart(3, "0");
+const permalink = permalinkOf("tip", number);
 ---
 
 <Base title={takeaway}>
