@@ -36,7 +36,7 @@
     "stylelint": "17.16.0",
     "stylelint-config-recommended": "18.0.0",
     "typescript": "6.0.3",
-    "wrangler": "4.152.0"
+    "wrangler": "4.153.0"
   },
   "license": "MIT"
 }
