@@ -1,0 +1,21 @@
+---
+const legalPath = "/en/legal/";
+const isLegalPage = Astro.url.pathname.replace(/\/?$/, "/") === legalPath;
+---
+
+<footer>
+  <p>
+    © 2026 Valentin Krebs · Content:{" "}
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    {" · "}
+    <a href={legalPath} aria-current={isLegalPage ? "page" : undefined}>
+      Legal notice & privacy
+    </a>
+  </p>
+</footer>
+<style>
+  footer {
+    margin-top: auto;
+    color: var(--muted);
+  }
+</style>
