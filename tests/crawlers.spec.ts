@@ -11,7 +11,7 @@ test.describe("crawlers", () => {
     const text = await response.text();
 
     expect(text).toContain(
-      "Content-Signal: search=yes, ai-input=yes, ai-train=no",
+      "Content-Signal: ai-train=no, search=yes, ai-input=yes",
     );
     expect(text).toContain(
       "Sitemap: https://codealacarte.dev/sitemap-index.xml",
