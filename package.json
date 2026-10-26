@@ -8,10 +8,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "npx wrangler dev",
-    "astro": "astro",
+    "preview": "npm run build && wrangler dev",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "validate:format": "prettier --check .",
+    "validate:types": "astro check",
+    "validate:css": "stylelint \"src/**/*.{css,astro}\"",
+    "validate:html": "npm run build && html-validate \"dist/**/*.html\"",
+    "validate": "npm run validate:format && npm run validate:types && npm run validate:css && npm run validate:html",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },
@@ -22,11 +25,17 @@
     "astro": "7.4.2"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.12",
     "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.64.1",
     "@types/node": "24.19.2",
+    "html-validate": "11.17.0",
+    "postcss-html": "2.0.0",
     "prettier": "3.9.10",
-    "prettier-plugin-astro": "1.1.1",
+    "prettier-plugin-astro": "1.1.2",
+    "stylelint": "17.16.0",
+    "stylelint-config-recommended": "18.0.0",
+    "typescript": "6.0.3",
     "wrangler": "4.152.0"
   },
   "license": "MIT"
