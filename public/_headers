@@ -4,3 +4,6 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), document-domain=()
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
