@@ -18,6 +18,7 @@ const tips = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/tips" }),
   schema: z.object({
     number: z.number().int().positive(),
+    publishedOn: z.date(),
     topic: z.string(),
     category: z.enum(categories),
     takeaway: z.string(),
