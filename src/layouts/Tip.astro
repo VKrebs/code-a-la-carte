@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Base from "./Base.astro";
-import Footer from "../components/Footer.astro";
+import TipFooter from "../components/TipFooter.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import CategoryBadge from "../components/CategoryBadge.astro";
 
@@ -21,10 +21,9 @@ const permalink = "t/" + number.toString().padStart(3, "0");
         <h1>{takeaway}</h1>
       </header>
       <slot />
+      <TipFooter permalink={permalink} />
     </article>
   </main>
-
-  <Footer permalink={permalink} />
 </Base>
 
 <style>

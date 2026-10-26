@@ -1,6 +1,7 @@
 ---
 import { Font } from "astro:assets";
 import "../styles/global.css";
+import SiteFooter from "../components/SiteFooter.astro";
 
 interface Props {
   title: string;
@@ -17,9 +18,12 @@ const { title } = Astro.props;
     <title>{title}</title>
     <Font cssVariable="--font-text" />
     <Font cssVariable="--font-code" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
     <slot />
+    <SiteFooter />
   </body>
 </html>
 <style>
@@ -27,5 +31,9 @@ const { title } = Astro.props;
     margin: 0 auto;
     max-width: 64rem;
     padding: 2rem clamp(1rem, 5vw, 4rem);
+    box-sizing: border-box;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
   }
 </style>

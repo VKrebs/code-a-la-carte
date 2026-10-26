@@ -26,9 +26,7 @@ test.describe("tip 001", () => {
 
     await expect(tip.getByText("Testing", { exact: true })).toBeVisible();
 
-    await expect(page.getByRole("contentinfo")).toContainText(
-      "codealacarte.dev/t/001",
-    );
+    await expect(tip.locator("footer")).toContainText("codealacarte.dev/t/001");
   });
 
   test("links Report an error to the erratum form for this page", async ({
