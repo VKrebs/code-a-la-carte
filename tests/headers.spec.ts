@@ -41,4 +41,34 @@ test.describe("headers", () => {
       "public, max-age=31536000, immutable",
     );
   });
+
+  test("no page breaks the content security policy", async ({
+    page,
+    request,
+  }) => {
+    const sitemap = await (await request.get("/sitemap-0.xml")).text();
+    const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
+      (match) => new URL(match[1]).pathname,
+    );
+    paths.push("/t/000");
+
+    await page.addInitScript(() => {
+      document.addEventListener("securitypolicyviolation", (event) => {
+        console.error(`CSP: ${event.violatedDirective} ${event.blockedURI}`);
+      });
+    });
+
+    const violations: string[] = [];
+    page.on("console", (message) => {
+      if (message.text().startsWith("CSP: ")) {
+        violations.push(`${page.url()} ${message.text()}`);
+      }
+    });
+
+    for (const path of paths) {
+      await page.goto(path);
+    }
+
+    expect(violations).toEqual([]);
+  });
 });
