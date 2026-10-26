@@ -78,6 +78,11 @@ jobs:
           WRANGLER_VERSION: ${{ steps.wrangler.outputs.version }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Check security.txt is live
+        run: |
+          curl --fail --silent --show-error --output /dev/null \
+            --retry 5 --retry-delay 10 --retry-all-errors \
+            https://codealacarte.dev/.well-known/security.txt
       - name: Check the live site
         run: |
           curl --fail --silent --show-error --location --output /dev/null \
@@ -127,6 +132,9 @@ jobs:
       - name: Check the preview
         run: |
           url=$(grep -o -m 1 'https://[^ ]*\.workers\.dev' preview.log)
+          curl --fail --silent --show-error --output /dev/null \
+            --retry 5 --retry-delay 10 --retry-all-errors \
+            "$url/.well-known/security.txt"
           echo "### Preview" >> "$GITHUB_STEP_SUMMARY"
           echo "[$url]($url)" >> "$GITHUB_STEP_SUMMARY"
           curl --fail --silent --show-error --location --output /dev/null \
