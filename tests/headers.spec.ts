@@ -8,7 +8,7 @@ test.describe("headers", () => {
 
     const headers = response.headers();
 
-    expect(headers["content-security-policy-report-only"]).toBe(
+    expect(headers["content-security-policy"]).toBe(
       "default-src 'self'; frame-ancestors 'none'; style-src 'self' 'unsafe-inline'",
     );
     expect(headers["x-content-type-options"]).toBe("nosniff");
