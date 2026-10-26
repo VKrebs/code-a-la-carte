@@ -3,10 +3,10 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.describe("permalink", () => {
   test("leads to the tip", async ({ page }) => {
-    await page.goto("/t/001");
+    await page.goto("/t/0001");
     const tip = page.getByRole("article");
 
-    await expect(page).toHaveURL("/en/tips/001/");
+    await expect(page).toHaveURL("/en/tips/0001/");
 
     await expect(
       tip.getByRole("heading", {
@@ -17,23 +17,23 @@ test.describe("permalink", () => {
   });
 
   test("redirects temporarily (302)", async ({ request }) => {
-    const response = await request.get("/t/001", { maxRedirects: 0 });
+    const response = await request.get("/t/0001", { maxRedirects: 0 });
 
     expect(response.status()).toBe(302);
-    expect(response.headers()["location"]).toBe("/en/tips/001");
+    expect(response.headers()["location"]).toBe("/en/tips/0001");
   });
 
   test("with trailing slash redirects temporarily (302)", async ({
     request,
   }) => {
-    const response = await request.get("/t/001/", { maxRedirects: 0 });
+    const response = await request.get("/t/0001/", { maxRedirects: 0 });
 
     expect(response.status()).toBe(302);
-    expect(response.headers()["location"]).toBe("/en/tips/001");
+    expect(response.headers()["location"]).toBe("/en/tips/0001");
   });
 
   test("shows 404 page when unknown", async ({ page }) => {
-    const response = await page.goto("/t/000");
+    const response = await page.goto("/t/0000");
 
     expect(response?.status()).toBe(404);
 
@@ -42,7 +42,7 @@ test.describe("permalink", () => {
   });
 
   test("has no accessibility violations on page 404", async ({ page }) => {
-    await page.goto("/t/000");
+    await page.goto("/t/0000");
 
     const results = await new AxeBuilder({ page }).analyze();
     expect(results.violations).toEqual([]);

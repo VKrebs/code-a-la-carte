@@ -8,7 +8,7 @@ body:
     attributes:
       label: Permalink
       description: What's the permalink of the page?
-      placeholder: codealacarte.dev/t/001
+      placeholder: codealacarte.dev/t/0001
     validations:
       required: true
   - type: textarea
