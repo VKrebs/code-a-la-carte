@@ -1,4 +1,4 @@
-const numberOfDigitsInAWrittenNumber = 3;
+const numberOfDigitsInAWrittenNumber = 4;
 
 export type Format = "tip" | "lesson";
 
