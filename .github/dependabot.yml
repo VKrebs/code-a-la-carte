@@ -16,6 +16,9 @@ updates:
       npm:
         patterns: ["*"]
         update-types: ["minor", "patch"]
+      npm-security:
+        applies-to: security-updates
+        patterns: ["*"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule: { interval: weekly }
@@ -24,4 +27,7 @@ updates:
       include: scope
     groups:
       actions:
+        patterns: ["*"]
+      actions-security:
+        applies-to: security-updates
         patterns: ["*"]
