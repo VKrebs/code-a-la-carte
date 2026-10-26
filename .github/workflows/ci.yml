@@ -87,7 +87,7 @@ jobs:
         run: |
           curl --fail --silent --show-error --location --output /dev/null \
             --retry 5 --retry-delay 10 --retry-all-errors \
-            https://codealacarte.dev/t/001
+            https://codealacarte.dev/t/0001
 
   deploy-preview:
     needs: test
@@ -139,4 +139,4 @@ jobs:
           echo "[$url]($url)" >> "$GITHUB_STEP_SUMMARY"
           curl --fail --silent --show-error --location --output /dev/null \
             --retry 5 --retry-delay 10 --retry-all-errors \
-            "$url/t/001"
+            "$url/t/0001"

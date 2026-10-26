@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("headers", () => {
   test("a tip page sends the security headers", async ({ request }) => {
-    const response = await request.get("/en/tips/001/");
+    const response = await request.get("/en/tips/0001/");
 
     expect(response.status()).toBe(200);
 
@@ -20,15 +20,19 @@ test.describe("headers", () => {
   });
 
   test("a tip page is not cached for good", async ({ request }) => {
-    const response = await request.get("/en/tips/001/");
+    const response = await request.get("/en/tips/0001/");
 
+    expect(response.status()).toBe(200);
     expect(response.headers()["cache-control"] ?? "").not.toContain(
       "immutable",
     );
   });
 
   test("an astro asset is cached for a year", async ({ request }) => {
-    const page = await request.get("/en/tips/001/");
+    const page = await request.get("/en/tips/0001/");
+
+    expect(page.status()).toBe(200);
+
     const html = await page.text();
     const matches = html.match(/\/_astro\/[^"')\s]+/);
 
@@ -50,7 +54,7 @@ test.describe("headers", () => {
     const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
       (match) => new URL(match[1]).pathname,
     );
-    paths.push("/t/000");
+    paths.push("/t/0000");
 
     await page.addInitScript(() => {
       document.addEventListener("securitypolicyviolation", (event) => {
