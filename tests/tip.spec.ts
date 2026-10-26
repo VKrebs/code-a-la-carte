@@ -1,9 +1,10 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test.describe("tip 001", () => {
+test.describe("tip 0001", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/en/tips/001");
+    const response = await page.goto("/en/tips/0001");
+    expect(response?.status()).toBe(200);
   });
 
   test("shows its eyebrow, title, category and footer", async ({ page }) => {
@@ -26,7 +27,9 @@ test.describe("tip 001", () => {
 
     await expect(tip.getByText("Testing", { exact: true })).toBeVisible();
 
-    await expect(tip.locator("footer")).toContainText("codealacarte.dev/t/001");
+    await expect(tip.locator("footer")).toContainText(
+      "codealacarte.dev/t/0001",
+    );
   });
 
   test("links Report an error to the erratum form for this page", async ({
@@ -37,7 +40,7 @@ test.describe("tip 001", () => {
     const url = new URL((await link.getAttribute("href"))!);
 
     expect(url.searchParams.get("template")).toBe("erratum.yml");
-    expect(url.searchParams.get("page")).toBe("codealacarte.dev/t/001");
+    expect(url.searchParams.get("page")).toBe("codealacarte.dev/t/0001");
   });
 
   test("has no accessibility violations", async ({ page }) => {

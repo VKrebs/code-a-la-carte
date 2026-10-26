@@ -37,7 +37,7 @@ test.describe("crawlers", () => {
 
     const sitemapText = await sitemapResponse.text();
 
-    expect(sitemapText).toContain("https://codealacarte.dev/en/tips/001/");
+    expect(sitemapText).toContain("https://codealacarte.dev/en/tips/0001/");
     expect(sitemapText).not.toContain("/404");
   });
 });
