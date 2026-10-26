@@ -22,6 +22,7 @@ test.describe("headers", () => {
   test("a tip page is not cached for good", async ({ request }) => {
     const response = await request.get("/en/tips/0001/");
 
+    expect(response.status()).toBe(200);
     expect(response.headers()["cache-control"] ?? "").not.toContain(
       "immutable",
     );
@@ -29,6 +30,9 @@ test.describe("headers", () => {
 
   test("an astro asset is cached for a year", async ({ request }) => {
     const page = await request.get("/en/tips/0001/");
+
+    expect(page.status()).toBe(200);
+
     const html = await page.text();
     const matches = html.match(/\/_astro\/[^"')\s]+/);
 

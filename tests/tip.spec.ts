@@ -3,7 +3,8 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.describe("tip 0001", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/en/tips/0001");
+    const response = await page.goto("/en/tips/0001");
+    expect(response?.status()).toBe(200);
   });
 
   test("shows its eyebrow, title, category and footer", async ({ page }) => {
