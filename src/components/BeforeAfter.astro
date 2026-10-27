@@ -7,17 +7,23 @@ interface Props {
 const { beforeLabel = "Before", afterLabel = "After" } = Astro.props;
 ---
 
-<div class="before-after">
-  <figure>
-    <figcaption>{beforeLabel}</figcaption>
-    <slot name="before" />
-  </figure>
-  <figure class="after-side">
-    <figcaption>{afterLabel}</figcaption>
-    <slot name="after" />
-  </figure>
+<div class="before-after-frame">
+  <div class="before-after">
+    <figure>
+      <figcaption>{beforeLabel}</figcaption>
+      <slot name="before" />
+    </figure>
+    <figure class="after-side">
+      <figcaption>{afterLabel}</figcaption>
+      <slot name="after" />
+    </figure>
+  </div>
 </div>
 <style>
+  .before-after-frame {
+    container-type: inline-size;
+  }
+
   .before-after {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -25,7 +31,7 @@ const { beforeLabel = "Before", afterLabel = "After" } = Astro.props;
     align-items: stretch;
   }
 
-  @media (min-width: 48rem) {
+  @container (min-width: 48rem) {
     .before-after {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
