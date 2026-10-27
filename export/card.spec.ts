@@ -5,9 +5,7 @@ import path from "node:path";
 test.describe("Card PNG export", () => {
   const tipsNumbers = fs
     .globSync("*/card/index.html", { cwd: "dist/en/tips" })
-    .map((s) => {
-      return s.split(path.sep, 1)[0];
-    })
+    .map((file) => file.split(path.sep, 1)[0])
     .sort();
 
   for (const number of tipsNumbers) {
