@@ -43,6 +43,30 @@ test.describe("tip 0001", () => {
     expect(url.searchParams.get("page")).toBe("codealacarte.dev/t/0001");
   });
 
+  test("offers its Card as a 1080×1080 PNG download", async ({
+    page,
+    request,
+  }) => {
+    const link = page.getByRole("link", { name: "Download as an image (PNG)" });
+    await expect(link).toHaveAttribute("href", "/en/tips/0001/card.png");
+    await expect(link).toHaveAttribute(
+      "download",
+      "code-a-la-carte-tip-0001.png",
+    );
+
+    const response = await request.get("/en/tips/0001/card.png");
+    expect(response.status()).toBe(200);
+    expect(response.headers()["content-type"]).toBe("image/png");
+
+    // A PNG stores its width and height as the first two fields of its
+    // header chunk, at bytes 16 and 20.
+    const png = await response.body();
+    expect({
+      width: png.readUInt32BE(16),
+      height: png.readUInt32BE(20),
+    }).toEqual({ width: 1080, height: 1080 });
+  });
+
   test("has no accessibility violations", async ({ page }) => {
     const results = await new AxeBuilder({ page }).analyze();
     expect(results.violations).toEqual([]);
