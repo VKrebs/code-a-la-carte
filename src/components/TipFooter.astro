@@ -3,9 +3,11 @@ import { displayUrlOf } from "../lib/urls";
 
 interface Props {
   permalink: URL;
+  imagePath: string;
+  imageName: string;
 }
 
-const { permalink } = Astro.props;
+const { permalink, imagePath, imageName } = Astro.props;
 
 const displayedPermalink = displayUrlOf(permalink);
 const reportUrl = new URL(
@@ -18,6 +20,9 @@ reportUrl.searchParams.set("page", displayedPermalink);
 <footer>
   <p>{displayedPermalink}</p>
   <a href={reportUrl.href}>Report an error</a>
+  <a href={imagePath} download={imageName}>
+    Download as an image (PNG)
+  </a>
 </footer>
 <style>
   footer {

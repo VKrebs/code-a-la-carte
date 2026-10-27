@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import Base from "./Base.astro";
 import TipFooter from "../components/TipFooter.astro";
 import TipHeader from "../components/TipHeader.astro";
-import { permalinkOf } from "../lib/numbers";
+import { formatNumber, permalinkOf } from "../lib/numbers";
 
 type Props = Pick<
   CollectionEntry<"tips">["data"],
@@ -13,6 +13,8 @@ type Props = Pick<
 const { number, topic, category, takeaway } = Astro.props;
 
 const permalink = permalinkOf("tip", number);
+const imagePath = `/en/tips/${formatNumber(number)}/card.png`;
+const imageName = `code-a-la-carte-tip-${formatNumber(number)}.png`;
 ---
 
 <Base title={takeaway}>
@@ -20,7 +22,11 @@ const permalink = permalinkOf("tip", number);
     <article>
       <TipHeader category={category} takeaway={takeaway} topic={topic} />
       <slot />
-      <TipFooter permalink={permalink} />
+      <TipFooter
+        permalink={permalink}
+        imagePath={imagePath}
+        imageName={imageName}
+      />
     </article>
   </main>
 </Base>
