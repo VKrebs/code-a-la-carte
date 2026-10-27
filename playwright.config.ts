@@ -1,17 +1,21 @@
 import { defineConfig, devices } from "@playwright/test";
 
+export const port = 4322;
+export const baseUrl = `http://localhost:${port}`;
+export const webServer = {
+  command: `npm run serve -- --port ${port}`,
+  url: `http://localhost:${port}`,
+  reuseExistingServer: false,
+};
+
 export default defineConfig({
   testDir: "tests",
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: "http://localhost:4322",
+    baseURL: baseUrl,
     trace: "retain-on-failure",
   },
-  webServer: {
-    command: "npm run serve -- --port 4322",
-    url: "http://localhost:4322",
-    reuseExistingServer: false,
-  },
+  webServer: webServer,
   forbidOnly: !!process.env.CI,
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 });

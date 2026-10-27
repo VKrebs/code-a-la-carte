@@ -11,11 +11,13 @@
     "serve": "wrangler dev",
     "preview": "npm run build && npm run serve",
     "format": "prettier --write .",
+    "export:cards": "playwright test --config playwright.export.config.ts",
     "validate:format": "prettier --check .",
     "validate:types": "astro check",
     "validate:css": "stylelint \"src/**/*.{css,astro}\"",
     "validate:html": "npm run build && html-validate \"dist/**/*.html\"",
     "validate": "npm run validate:format && npm run validate:types && npm run validate:css && npm run validate:html",
+    "test:full": "npm run build && npm run export:cards && npm run test:e2e",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },
