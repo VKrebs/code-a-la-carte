@@ -33,7 +33,7 @@ import Base from "../layouts/Base.astro";
     padding: 0.35em 0.8em 0.3em;
     background-color: var(--brand-orange);
     border: 4px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--ink);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
     font-size: clamp(2rem, 8vw, 5rem);
     font-weight: 700;
     letter-spacing: var(--tracking-caps);
@@ -61,7 +61,7 @@ import Base from "../layouts/Base.astro";
     color: var(--ink);
     background-color: var(--lilac);
     border: 4px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--shadow-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--shadow-color);
     font-weight: 700;
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     text-transform: uppercase;
@@ -78,7 +78,7 @@ import Base from "../layouts/Base.astro";
   }
 
   .home-link:active {
-    translate: 6px 6px;
+    translate: var(--shadow-offset) var(--shadow-offset);
     box-shadow: none;
   }
 

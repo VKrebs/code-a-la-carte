@@ -30,4 +30,5 @@
   --astro-code-token-constant: var(--code-number);
 
   --tracking-caps: 0.12em;
+  --shadow-offset: 6px;
 }
