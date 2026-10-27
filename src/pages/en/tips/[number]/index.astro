@@ -1,11 +1,11 @@
 ---
-import { getCollection, render } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import { formatNumber } from "../../../../lib/numbers";
+import { getPublishedTips } from "../../../../lib/tips";
 import Tip from "../../../../layouts/Tip.astro";
 
 export async function getStaticPaths() {
-  const tips = await getCollection("tips", (tip) => tip.id.startsWith("en/"));
+  const tips = await getPublishedTips();
   return tips.map((tip) => ({
     params: { number: formatNumber(tip.data.number) },
     props: { tip },
