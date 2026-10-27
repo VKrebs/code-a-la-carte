@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Head from "../components/Head.astro";
+import { permalinkOf, formatNumber } from "../lib/numbers";
+import { absoluteUrlOf, displayUrlOf } from "../lib/urls";
+import TipHeader from "../components/TipHeader.astro";
+
+type Props = CollectionEntry<"tips">["data"];
+
+const { number, takeaway, publishedOn, category, topic } = Astro.props;
+const year = publishedOn.getUTCFullYear();
+const permalink = displayUrlOf(permalinkOf("tip", number));
+const canonical = absoluteUrlOf(`/en/tips/${formatNumber(number)}/`).href;
+---
+
+<html lang="en">
+  <head>
+    <Head title={takeaway} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <main>
+      <TipHeader category={category} topic={topic} takeaway={takeaway} />
+      <slot />
+    </main>
+    <footer>
+      <p>© {year} Valentin Krebs · CC BY-SA 4.0</p>
+      <p>{permalink}</p>
+    </footer>
+  </body>
+</html>
+<style>
+  body {
+    margin: 0;
+    padding: 64px;
+    height: 1080px;
+    width: 1080px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: var(--muted);
+  }
+
+  footer p {
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import { formatNumber } from "../../../../lib/numbers";
+import { getPublishedTips } from "../../../../lib/tips";
+import Card from "../../../../layouts/Card.astro";
+
+export async function getStaticPaths() {
+  const tips = await getPublishedTips();
+  return tips.map((tip) => ({
+    params: { number: formatNumber(tip.data.number) },
+    props: { tip },
+  }));
+}
+
+type Props = { tip: CollectionEntry<"tips"> };
+const { tip } = Astro.props;
+const { Content } = await render(tip);
+---
+
+<Card {...tip.data}>
+  <Content />
+</Card>
