@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "npm run build && wrangler dev",
+    "serve": "wrangler dev",
+    "preview": "npm run build && npm run serve",
     "format": "prettier --write .",
     "validate:format": "prettier --check .",
     "validate:types": "astro check",
