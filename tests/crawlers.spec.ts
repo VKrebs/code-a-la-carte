@@ -39,5 +39,8 @@ test.describe("crawlers", () => {
 
     expect(sitemapText).toContain("https://codealacarte.dev/en/tips/0001/");
     expect(sitemapText).not.toContain("/404");
+    expect(sitemapText).not.toContain(
+      "https://codealacarte.dev/en/tips/0001/card",
+    );
   });
 });

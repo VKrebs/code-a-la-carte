@@ -24,5 +24,10 @@ export default defineConfig({
     },
   ],
   markdown: { shikiConfig: { theme: "css-variables" } },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.endsWith("/card/"),
+    }),
+  ],
 });
