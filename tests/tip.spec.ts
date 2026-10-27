@@ -11,7 +11,7 @@ test.describe("tip 0001", () => {
     const tip = page.getByRole("article");
 
     await expect(page).toHaveTitle(
-      "Drop the AAA comments, keep the AAA structure.",
+      "Drop the AAA comments, keep the AAA structure. · Code à la Carte",
     );
 
     await expect(
