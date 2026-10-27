@@ -2,11 +2,13 @@
 import type { CollectionEntry } from "astro:content";
 import Base from "./Base.astro";
 import TipFooter from "../components/TipFooter.astro";
-import Eyebrow from "../components/Eyebrow.astro";
-import CategoryBadge from "../components/CategoryBadge.astro";
+import TipHeader from "../components/TipHeader.astro";
 import { permalinkOf } from "../lib/numbers";
 
-type Props = CollectionEntry<"tips">["data"];
+type Props = Pick<
+  CollectionEntry<"tips">["data"],
+  "number" | "topic" | "category" | "takeaway"
+>;
 
 const { number, topic, category, takeaway } = Astro.props;
 
@@ -16,22 +18,9 @@ const permalink = permalinkOf("tip", number);
 <Base title={takeaway}>
   <main>
     <article>
-      <header>
-        <CategoryBadge category={category} />
-        <Eyebrow topic={topic} />
-        <h1>{takeaway}</h1>
-      </header>
+      <TipHeader category={category} takeaway={takeaway} topic={topic} />
       <slot />
       <TipFooter permalink={permalink} />
     </article>
   </main>
 </Base>
-
-<style>
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-</style>
