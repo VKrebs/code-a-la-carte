@@ -1,7 +1,6 @@
 ---
-import { Font } from "astro:assets";
-import "../styles/global.css";
 import SiteFooter from "../components/SiteFooter.astro";
+import Head from "../components/Head.astro";
 
 interface Props {
   title: string;
@@ -12,14 +11,7 @@ const { title } = Astro.props;
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <Font cssVariable="--font-text" />
-    <Font cssVariable="--font-code" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <Head title={title} />
   </head>
   <body>
     <slot />
