@@ -54,7 +54,10 @@ test.describe("headers", () => {
     const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
       (match) => new URL(match[1]).pathname,
     );
-    paths.push("/t/0000");
+    const cardPaths = paths
+      .filter((path) => /^\/en\/tips\/\d{4}\/$/.test(path))
+      .map((path) => `${path}card/`);
+    paths.push(...cardPaths, "/t/0000");
 
     await page.addInitScript(() => {
       document.addEventListener("securitypolicyviolation", (event) => {
