@@ -4,7 +4,7 @@ export const port = 4322;
 export const baseUrl = `http://localhost:${port}`;
 export const webServer = {
   command: `npm run serve -- --port ${port}`,
-  url: `http://localhost:${port}`,
+  url: baseUrl,
   reuseExistingServer: false,
 };
 
