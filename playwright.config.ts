@@ -15,7 +15,7 @@ export default defineConfig({
     baseURL: baseUrl,
     trace: "retain-on-failure",
   },
-  webServer: webServer,
+  webServer,
   forbidOnly: !!process.env.CI,
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 });
