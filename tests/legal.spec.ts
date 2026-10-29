@@ -6,7 +6,7 @@ test.describe("legal page", () => {
     await page.goto("/en/legal/");
   });
 
-  test("has the legal notice, licences and privacy sections", async ({
+  test("has the legal notice, licences, credits and privacy sections", async ({
     page,
   }) => {
     await expect(
@@ -16,6 +16,10 @@ test.describe("legal page", () => {
     await expect(
       page.getByRole("heading", { level: 2, name: "Licences" }),
     ).toHaveAttribute("id", "licences");
+
+    await expect(
+      page.getByRole("heading", { level: 2, name: "Credits" }),
+    ).toHaveAttribute("id", "credits");
 
     await expect(
       page.getByRole("heading", { level: 2, name: "Privacy" }),
