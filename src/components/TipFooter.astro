@@ -1,5 +1,6 @@
 ---
 import { displayUrlOf } from "../lib/urls";
+import DownloadIcon from "@phosphor-icons/core/assets/bold/download-simple-bold.svg";
 
 interface Props {
   permalink: URL;
@@ -19,13 +20,34 @@ reportUrl.searchParams.set("page", displayedPermalink);
 
 <footer>
   <p>{displayedPermalink}</p>
-  <a href={reportUrl.href}>Report an error</a>
-  <a href={imagePath} download={imageName}>
-    Download as an image (PNG)
-  </a>
+  <div class="actions-row">
+    <a class="button" href={imagePath} download={imageName}>
+      <DownloadIcon aria-hidden="true" width="1.25em" height="1.25em" />
+      Download as an image (PNG)
+    </a>
+    <a href={reportUrl.href}>Report an error</a>
+  </div>
 </footer>
 <style>
   footer {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     color: var(--muted);
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
   }
 </style>
