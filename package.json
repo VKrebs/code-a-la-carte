@@ -22,11 +22,11 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "0.4.5",
-    "@astrojs/mdx": "8.1.1",
+    "@astrojs/markdown-satteri": "0.4.6",
+    "@astrojs/mdx": "8.1.2",
     "@astrojs/sitemap": "3.7.4",
     "@phosphor-icons/core": "2.1.1",
-    "astro": "7.4.2"
+    "astro": "7.4.4"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
@@ -40,7 +40,7 @@
     "stylelint": "17.16.0",
     "stylelint-config-recommended": "18.0.0",
     "typescript": "6.0.3",
-    "wrangler": "4.153.0"
+    "wrangler": "4.156.0"
   },
   "license": "MIT"
 }
